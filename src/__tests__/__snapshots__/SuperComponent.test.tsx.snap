@@ -7,14 +7,24 @@ exports[`SuperComponent > should render 1`] = `
     <div>
       <button>
         count is 
-        0
+        <span
+          data-testid="counter"
+          style="color: red;"
+        >
+          0
+        </span>
       </button>
     </div>
   </body>,
   "container": <div>
     <button>
       count is 
-      0
+      <span
+        data-testid="counter"
+        style="color: red;"
+      >
+        0
+      </span>
     </button>
   </div>,
   "debug": [Function],
