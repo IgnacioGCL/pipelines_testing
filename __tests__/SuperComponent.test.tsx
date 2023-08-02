@@ -1,6 +1,6 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen } from "test/utils";
 import { describe, expect, it } from "vitest";
-import SuperComponent from "../components/SuperComponent";
+import SuperComponent from "@/components/SuperComponent";
 
 describe("SuperComponent", () => {
   it("should render", () => {
@@ -8,32 +8,32 @@ describe("SuperComponent", () => {
     expect(result).toMatchSnapshot();
   });
 
-  it("should change counter when pressed", () => {
-    render(<SuperComponent />);
+  it("should change counter when pressed", async () => {
+    const { user } = render(<SuperComponent />);
     const button = screen.getByRole("button");
-    fireEvent.click(button);
+    await user.click(button);
     expect(screen.getByRole("button")).toHaveTextContent("count is 1");
   });
 
-  it("should have red color when counter is even", () => {
-    render(<SuperComponent />);
+  it("should have red color when counter is even", async () => {
+    const { user } = render(<SuperComponent />);
     const counter = screen.getByTestId("counter");
     expect(counter.style.color).toBe("red");
     const button = screen.getByRole("button");
-    fireEvent.click(button);
+    await user.click(button);
     expect(counter.style.color).not.toBe("red");
-    fireEvent.click(button);
+    await user.click(button);
     expect(counter.style.color).toBe("red");
   });
 
-  it("should have blue color when counter is odd", () => {
-    render(<SuperComponent />);
+  it("should have blue color when counter is odd", async () => {
+    const { user } = render(<SuperComponent />);
     const counter = screen.getByTestId("counter");
     expect(counter.style.color).not.toBe("blue");
     const button = screen.getByRole("button");
-    fireEvent.click(button);
+    await user.click(button);
     expect(counter.style.color).toBe("blue");
-    fireEvent.click(button);
+    await user.click(button);
     expect(counter.style.color).not.toBe("blue");
   });
 });

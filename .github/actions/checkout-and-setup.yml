@@ -1,0 +1,13 @@
+name: Checkout, Install Node and Dependencies
+
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout Repository 🫠
+      uses: actions/checkout@3
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+        cache: npm
+    - run: npm ci
