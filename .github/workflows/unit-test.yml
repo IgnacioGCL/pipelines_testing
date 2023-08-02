@@ -10,20 +10,26 @@ jobs:
   unit-test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout and setup Node
-        uses: ./.github/actions/checkout-and-setup
+      - name: Checkout Repository 🫠
+        uses: actions/checkout@v3
+      - name: Checkout and Setup Node
+        uses: ./.github/actions/setup-node
       - run: npm test
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout and setup Node
-        uses: ./.github/actions/checkout-and-setup
+      - name: Checkout Repository 🫠
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: ./.github/actions/setup-node
       - run: npm run build
   coverage:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout and setup Node
-        uses: ./.github/actions/checkout-and-setup
+      - name: Checkout Repository 🫠
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: ./.github/actions/setup-node
       - run: npm test -- --coverage
       - uses: actions/upload-artifact@v3
         name: Archive coverage report
