@@ -1,4 +1,4 @@
-name: Checkout, Install Node and Dependencies
+name: Install Node and Dependencies
 
 runs:
   using: "composite"
@@ -8,4 +8,5 @@ runs:
       with:
         node-version: 18
         cache: npm
-    - run: npm ci
+    - name: Install dependencies
+      run: npm ci
